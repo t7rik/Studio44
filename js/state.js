@@ -46,7 +46,7 @@ class Studio44State {
           barberName: 'Zana',
           customer: {
             name: 'Alex Neumann',
-            phone: '0171 2345678',
+            phone: '0676 2345678',
             email: 'alex.neumann@example.com',
             notes: 'Bitte Mid Fade mit fließendem Übergang in den Bart.'
           },
@@ -66,7 +66,7 @@ class Studio44State {
           barberName: 'Tarik',
           customer: {
             name: 'Alex Neumann',
-            phone: '0171 2345678',
+            phone: '0676 2345678',
             email: 'alex.neumann@example.com',
             notes: 'Crop Top Styling mit Texture Powder.'
           },

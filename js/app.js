@@ -593,24 +593,15 @@
       return;
     }
 
-    const now = new Date();
-    const todayIso = formatDateIso(now);
-    const isToday = isoDateStr === todayIso;
-    const currentMin = now.getHours() * 60 + now.getMinutes();
-
     dom.timeSlotsGrid.innerHTML = slots.map(slotTime => {
-      const [slotH, slotM] = slotTime.split(':').map(Number);
-      const slotTotalMin = slotH * 60 + slotM;
-      const isPast = isToday && (slotTotalMin <= currentMin);
       const isBooked = bookedTimes.includes(slotTime);
-      const isDisabled = isBooked || isPast;
       const isSelected = appDraft.selectedTime === slotTime;
-      const tooltip = isPast ? 'Bereits verstrichen' : isBooked ? 'Bereits gebucht / belegt' : 'Freier Termin';
+      const tooltip = isBooked ? 'Bereits gebucht / belegt' : 'Freier Termin';
 
       return `
         <button type="button" class="time-slot-btn ${isSelected ? 'selected' : ''}" 
                 data-time="${slotTime}" 
-                ${isDisabled ? `disabled title="${tooltip}"` : `title="${tooltip}"`}>
+                ${isBooked ? `disabled title="${tooltip}"` : `title="${tooltip}"`}>
           ${slotTime}
         </button>
       `;
@@ -647,7 +638,7 @@
     if (!phoneVal || !phoneRegex.test(phoneVal.replace(/\s+/g, ''))) {
       dom.custPhone.classList.add('error');
       dom.custPhoneError.style.color = '#ef4444';
-      dom.custPhoneError.textContent = 'Bitte gib eine gültige Handynummer ein (z. B. 0176 12345678).';
+      dom.custPhoneError.textContent = 'Bitte gib eine gültige Handynummer ein (z. B. 0676 1234567 oder +43...).';
       isValid = false;
     } else {
       dom.custPhone.classList.remove('error');
