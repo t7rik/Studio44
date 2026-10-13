@@ -19,7 +19,7 @@
 
   --text-main: #FFFFFF;
   --text-secondary: #A0A0A0;
-  --text-muted: #666666;
+  --text-muted: #8C8C8C;
   --text-dark: #0A0A0A;
 
   --border-subtle: rgba(255, 255, 255, 0.08);
@@ -2647,3 +2647,30 @@ textarea.form-control {
     align-items: center;
   }
 }
+
+/* Projektziele & Designsystem */
+.ds-grid{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:640px){.ds-grid.c2{grid-template-columns:repeat(2,1fr)}.ds-grid.c3{grid-template-columns:repeat(2,1fr)}.ds-grid.sw{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:992px){.ds-grid.c3{grid-template-columns:repeat(3,1fr)}.ds-grid.c4{grid-template-columns:repeat(4,1fr)}.ds-grid.sw{grid-template-columns:repeat(6,1fr)}}
+.ds-card{background:var(--bg-card);border:1px solid var(--border-card);border-radius:var(--radius-md);padding:22px}
+.ds-card h3{font-size:18px;margin-bottom:8px}
+.ds-card p,.ds-card li{color:var(--text-secondary);font-size:15px}
+.ds-card ul{padding-left:18px;display:grid;gap:6px;margin-top:8px}
+.ds-num{font-family:var(--font-heading);font-weight:800;font-size:34px;color:var(--accent-lime);line-height:1}
+.ds-sub{font-family:var(--font-heading);font-size:20px;margin:40px 0 16px}
+.ds-sw{border-radius:var(--radius-md);border:1px solid var(--border-subtle);overflow:hidden;background:var(--bg-card)}
+.ds-sw i{display:block;height:64px}
+.ds-sw span{display:block;padding:10px 12px;font-size:12px;color:var(--text-secondary);line-height:1.4}
+.ds-sw b{display:block;color:var(--text-main);font-size:13px}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-box{width:72px;height:72px;background:var(--bg-elevated);border:1px solid var(--border-subtle)}
+.ds-tbl{width:100%;border-collapse:collapse;font-size:14px}
+.ds-tbl th,.ds-tbl td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border-subtle);color:var(--text-secondary);vertical-align:top}
+.ds-tbl th{color:var(--text-main);font-family:var(--font-heading)}
+.ds-scroll{overflow-x:auto}
+/* Accessibility & safe areas */
+:focus-visible{outline:2px solid var(--accent-lime);outline-offset:2px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+.site-header{padding-top:env(safe-area-inset-top,0px)}
+@media (max-width:991px){body{padding-bottom:calc(var(--mobile-nav-height) + 16px + env(safe-area-inset-bottom,0px))}}
+

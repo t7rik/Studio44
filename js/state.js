@@ -12,7 +12,7 @@ class Studio44State {
 
   // Initialisiert realistische Demo-Termine, falls noch keine Daten vorliegen
   initDemoDataIfNeeded() {
-    const existing = localStorage.getItem(this.STORAGE_KEY);
+    const existing = (window.__ls||localStorage).getItem(this.STORAGE_KEY);
     if (!existing) {
       const today = new Date();
       
@@ -88,7 +88,7 @@ class Studio44State {
   // Alle Termine laden
   getAll() {
     try {
-      const data = localStorage.getItem(this.STORAGE_KEY);
+      const data = (window.__ls||localStorage).getItem(this.STORAGE_KEY);
       return data ? JSON.parse(data) : [];
     } catch (e) {
       console.error('Fehler beim Laden von Studio44 LocalStorage:', e);
@@ -99,7 +99,7 @@ class Studio44State {
   // Speichern & Event trigger
   save(appointments) {
     try {
-      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(appointments));
+      (window.__ls||localStorage).setItem(this.STORAGE_KEY, JSON.stringify(appointments));
       this.notify(appointments);
     } catch (e) {
       console.error('Fehler beim Speichern in LocalStorage:', e);
@@ -238,3 +238,4 @@ class Studio44State {
 }
 
 window.studio44State = new Studio44State();
+
